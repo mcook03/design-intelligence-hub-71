@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/silicore/AppShell";
-import { Panel, ScorePill } from "@/routes/dashboard";
+import { Panel, ScorePill } from "@/components/silicore/Panel";
 import { ArrowRight, TrendingUp, TrendingDown, Minus } from "lucide-react";
 
 export const Route = createFileRoute("/compare")({
