@@ -322,9 +322,9 @@ function CTA() {
       <div className="mx-auto max-w-5xl px-6">
         <div className="relative overflow-hidden rounded-3xl border border-border bg-surface p-12 text-center md:p-20">
           <div className="bg-hero-glow pointer-events-none absolute inset-0" />
-          <div className="relative">
+          <Reveal as="div" className="relative">
             <h2 className="text-gradient text-3xl font-semibold tracking-tight md:text-5xl">
-              Accelerate your <br className="hidden md:block" /> Silicore journey.
+              <RevealWords text="Accelerate your Silicore journey." stagger={70} />
             </h2>
             <p className="mx-auto mt-5 max-w-md text-muted-foreground">
               Analyze your designs with Silicore. Build with intelligence.
@@ -339,7 +339,7 @@ function CTA() {
                 Sign in
               </Button>
             </div>
-          </div>
+          </Reveal>
         </div>
       </div>
     </section>
