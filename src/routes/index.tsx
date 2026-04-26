@@ -184,12 +184,17 @@ function Hero() {
           </div>
         </Reveal>
 
-        {/* Intelligence — dominant first thing, with descender padding + intense glow */}
-        <h1 className="mx-auto mt-12 max-w-6xl text-[64px] font-semibold tracking-[-0.035em] sm:text-[88px] md:text-[120px] lg:text-[160px]">
+        {/* Headline — Hardware Design above, Intelligence dominant */}
+        <h1 className="mx-auto mt-12 max-w-6xl font-semibold tracking-[-0.035em]">
           <Reveal>
+            <span className="block text-[40px] leading-[1.05] text-foreground sm:text-[56px] md:text-[72px] lg:text-[88px]">
+              Hardware Design
+            </span>
+          </Reveal>
+          <Reveal delay={200}>
             <span
               aria-label="Intelligence"
-              className="animate-shimmer-text block bg-clip-text pb-[0.22em] leading-[1.1] text-transparent"
+              className="animate-shimmer-text block bg-clip-text pb-[0.22em] text-[64px] leading-[1.1] text-transparent sm:text-[88px] md:text-[120px] lg:text-[160px]"
               style={{
                 backgroundImage:
                   "linear-gradient(100deg, oklch(0.985 0.012 220) 0%, oklch(0.86 0.13 215) 30%, oklch(0.78 0.13 255) 55%, oklch(0.86 0.13 215) 75%, oklch(0.985 0.012 220) 100%)",
@@ -200,16 +205,10 @@ function Hero() {
               Intelligence
             </span>
           </Reveal>
-
-          <Reveal delay={250}>
-            <span className="mt-1 block text-[18px] font-normal tracking-[0.04em] text-muted-foreground sm:text-[22px] md:text-[26px]">
-              for hardware that has to work.
-            </span>
-          </Reveal>
         </h1>
 
         <Reveal delay={550}>
-          <p className="mx-auto mt-12 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+          <p className="mx-auto mt-10 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
             Silicore is deep engineering intelligence for PCB design — surfacing
             risk, exposing weakness, and sharpening performance long before the
             board ever ships to production.
