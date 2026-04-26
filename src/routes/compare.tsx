@@ -5,7 +5,7 @@ import { ArrowRight, TrendingUp, TrendingDown, Minus } from "lucide-react";
 
 export const Route = createFileRoute("/compare")({
   head: () => ({ meta: [{ title: "Compare revisions — Silicore" }] }),
-  component: Compare;
+  component: Compare,
 });
 
 const A = { name: "sentinel-power", rev: "rev-b", score: 73, issues: 23, cats: { DFM: 80, "Signal integrity": 68, Thermal: 85, EMI: 65, BOM: 80 } };
