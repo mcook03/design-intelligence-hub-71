@@ -160,12 +160,59 @@ function Hero() {
           }}
         />
       </div>
-      <div className="pointer-events-none absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2">
-        <div className="h-[520px] w-[520px] rounded-full border border-white/[0.06] animate-spin-slower" />
+      {/* PCB trace pattern behind the headline */}
+      <div className="pointer-events-none absolute left-1/2 top-[42%] flex -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+        <svg
+          viewBox="0 0 800 800"
+          className="h-[640px] w-[640px] opacity-[0.22]"
+          fill="none"
+          stroke="oklch(0.86 0.13 215)"
+          strokeWidth="1.1"
+          style={{
+            mask: "radial-gradient(circle, black 35%, transparent 78%)",
+            WebkitMask: "radial-gradient(circle, black 35%, transparent 78%)",
+          }}
+        >
+          <defs>
+            <radialGradient id="pad-grad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stopColor="oklch(0.86 0.13 215)" stopOpacity="1" />
+              <stop offset="100%" stopColor="oklch(0.86 0.13 215)" stopOpacity="0" />
+            </radialGradient>
+          </defs>
+          {/* horizontal + vertical traces */}
+          <path d="M40 200 L260 200 L300 240 L520 240 L560 200 L760 200" />
+          <path d="M40 600 L220 600 L260 560 L520 560 L560 600 L760 600" />
+          <path d="M120 40 L120 240 L160 280 L160 520 L120 560 L120 760" />
+          <path d="M680 40 L680 220 L640 260 L640 540 L680 580 L680 760" />
+          <path d="M260 400 L340 400 L380 360 L420 360 L460 400 L540 400" />
+          <path d="M400 120 L400 260 L360 300 L360 360" />
+          <path d="M400 680 L400 540 L440 500 L440 440" />
+          {/* diagonal accent traces */}
+          <path d="M200 320 L320 320 L380 380" strokeOpacity="0.6" />
+          <path d="M600 480 L480 480 L420 420" strokeOpacity="0.6" />
+          {/* vias / pads */}
+          {[
+            [120, 200], [260, 200], [560, 200], [680, 220],
+            [120, 560], [260, 560], [560, 560], [680, 580],
+            [400, 120], [400, 680], [400, 400], [340, 400], [460, 400],
+            [200, 320], [600, 480],
+          ].map(([cx, cy], i) => (
+            <g key={i}>
+              <circle cx={cx} cy={cy} r="3.5" fill="oklch(0.86 0.13 215)" />
+              <circle cx={cx} cy={cy} r="9" fill="url(#pad-grad)" opacity="0.7" />
+            </g>
+          ))}
+          {/* corner IC outlines */}
+          <rect x="320" y="340" width="160" height="120" rx="6" strokeOpacity="0.45" />
+          {[0,1,2,3,4,5].map(i => (
+            <line key={`tl-${i}`} x1={340 + i*22} y1="340" x2={340 + i*22} y2="328" strokeOpacity="0.45" />
+          ))}
+          {[0,1,2,3,4,5].map(i => (
+            <line key={`bl-${i}`} x1={340 + i*22} y1="460" x2={340 + i*22} y2="472" strokeOpacity="0.45" />
+          ))}
+        </svg>
       </div>
-      <div className="pointer-events-none absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2">
-        <div className="h-[340px] w-[340px] rounded-full border border-white/[0.05]" />
-      </div>
+
 
       {/* Grain overlay */}
       <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay" />
