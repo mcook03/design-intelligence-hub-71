@@ -41,29 +41,50 @@ function Hero() {
       <div className="bg-grid pointer-events-none absolute inset-0 opacity-40 [mask-image:radial-gradient(ellipse_70%_60%_at_50%_0%,#000_30%,transparent_80%)]" />
       <div className="bg-hero-glow pointer-events-none absolute inset-0" />
 
-      <div className="relative mx-auto max-w-6xl px-6 pb-28 pt-24 text-center md:pt-36">
-        <SectionLabel center>Silicore</SectionLabel>
-        <h1 className="text-gradient mx-auto mt-6 max-w-4xl text-5xl font-semibold tracking-tight md:text-7xl">
-          Hardware Design Intelligence.
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground md:text-lg">
-          Deep engineering intelligence for your PCB designs — identify potential
-          risks, understand design weaknesses, and improve performance before
-          production.
-        </p>
-        <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
-          <Button size="lg" className="rounded-full px-6 font-medium">
-            Request demo <ArrowRight className="ml-1 h-4 w-4" />
-          </Button>
-          <Button size="lg" variant="ghost" className="rounded-full px-6 text-muted-foreground hover:text-foreground">
-            Learn more
-          </Button>
-        </div>
+      {/* Floating colored glows */}
+      <div
+        className="pointer-events-none absolute -left-24 top-24 h-[420px] w-[420px] rounded-full opacity-60 blur-3xl animate-float-glow"
+        style={{ background: "radial-gradient(circle, oklch(0.88 0.15 175 / 0.55), transparent 65%)" }}
+      />
+      <div
+        className="pointer-events-none absolute right-[-120px] top-10 h-[460px] w-[460px] rounded-full opacity-50 blur-3xl animate-float-glow"
+        style={{ background: "radial-gradient(circle, oklch(0.78 0.13 255 / 0.5), transparent 65%)", animationDelay: "1.5s" }}
+      />
+      <div
+        className="pointer-events-none absolute left-1/2 top-[60%] h-[380px] w-[380px] -translate-x-1/2 rounded-full opacity-40 blur-3xl animate-float-glow"
+        style={{ background: "radial-gradient(circle, oklch(0.86 0.13 215 / 0.55), transparent 65%)", animationDelay: "3s" }}
+      />
 
-        {/* Abstract hero visual: layered concentric rings + grid lines */}
-        <div className="relative mx-auto mt-24 h-[320px] max-w-3xl md:h-[420px]">
-          <HeroVisual />
-        </div>
+      <div className="relative mx-auto max-w-6xl px-6 pb-28 pt-24 text-center md:pt-36">
+        <Reveal>
+          <SectionLabel center>Silicore</SectionLabel>
+        </Reveal>
+        <h1 className="text-gradient mx-auto mt-6 max-w-4xl text-5xl font-semibold tracking-tight md:text-7xl">
+          <RevealWords text="Hardware Design Intelligence." stagger={90} />
+        </h1>
+        <Reveal delay={500}>
+          <p className="mx-auto mt-6 max-w-2xl text-base text-muted-foreground md:text-lg">
+            Deep engineering intelligence for your PCB designs — identify potential
+            risks, understand design weaknesses, and improve performance before
+            production.
+          </p>
+        </Reveal>
+        <Reveal delay={700}>
+          <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
+            <Button size="lg" className="rounded-full px-6 font-medium">
+              Request demo <ArrowRight className="ml-1 h-4 w-4" />
+            </Button>
+            <Button size="lg" variant="ghost" className="rounded-full px-6 text-muted-foreground hover:text-foreground">
+              Learn more
+            </Button>
+          </div>
+        </Reveal>
+
+        <Reveal delay={900}>
+          <div className="relative mx-auto mt-24 h-[320px] max-w-3xl md:h-[420px]">
+            <HeroVisual />
+          </div>
+        </Reveal>
       </div>
     </section>
   );
