@@ -91,6 +91,12 @@ function Hero() {
 }
 
 function HeroVisual() {
+  const ringColors = [
+    "oklch(0.86 0.13 215 / 0.35)", // cyan
+    "oklch(0.78 0.13 255 / 0.32)", // electric blue
+    "oklch(0.88 0.15 175 / 0.32)", // teal
+    "oklch(0.86 0.13 215 / 0.45)", // cyan
+  ];
   return (
     <div className="relative h-full w-full">
       <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
@@ -98,16 +104,17 @@ function HeroVisual() {
           {[480, 380, 280, 180].map((s, i) => (
             <div
               key={s}
-              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border border-primary/20"
+              className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 rounded-full border"
               style={{
                 width: s,
                 height: s,
-                opacity: 1 - i * 0.18,
+                borderColor: ringColors[i],
+                opacity: 1 - i * 0.12,
                 animation: `spin ${30 + i * 10}s linear infinite ${i % 2 ? "reverse" : ""}`,
               }}
             />
           ))}
-          <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-primary/40 bg-surface shadow-[0_0_60px_-10px_oklch(0.85_0.16_195_/_0.5)]">
+          <div className="relative flex h-32 w-32 items-center justify-center rounded-full border border-primary/40 bg-surface shadow-[0_0_60px_-10px_oklch(0.86_0.13_215_/_0.6)] animate-pulse-ring">
             <div className="absolute inset-2 rounded-full border border-primary/30" />
             <div className="font-mono text-[10px] uppercase tracking-[0.3em] text-primary">core</div>
           </div>
