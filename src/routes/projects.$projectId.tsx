@@ -8,6 +8,8 @@ import {
   ArrowLeft, Users, MessageSquare, ShieldCheck, GitBranch, CheckCircle2,
   CircleDot, Clock, Plus, FileCheck2, AlertTriangle,
 } from "lucide-react";
+import { BoardHeatmap } from "@/components/silicore/BoardHeatmap";
+import { SeverityDonut, ScoreTrend, CategoryBreakdown } from "@/components/silicore/AnalysisCharts";
 
 export const Route = createFileRoute("/projects/$projectId")({
   head: () => ({ meta: [{ title: "Project detail — Silicore" }] }),
@@ -101,6 +103,47 @@ function ProjectDetail() {
                 </div>
               ))}
             </div>
+          </Panel>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-[1fr_360px]">
+          <BoardHeatmap title="Project hotspot map" cols={20} rows={10} />
+          <Panel title="Severity mix">
+            <SeverityDonut
+              data={[
+                { name: "critical", value: 12 },
+                { name: "medium", value: 18 },
+                { name: "low", value: 27 },
+              ]}
+            />
+          </Panel>
+        </div>
+
+        <div className="grid gap-4 lg:grid-cols-2">
+          <Panel title="Score trend · last 8 revs">
+            <ScoreTrend
+              data={[
+                { label: "rev-a", score: 62 },
+                { label: "rev-b", score: 65 },
+                { label: "rev-c", score: 70 },
+                { label: "rev-d", score: 68 },
+                { label: "rev-e", score: 74 },
+                { label: "rev-f", score: 78 },
+                { label: "rev-g", score: 80 },
+                { label: "rev-h", score: 81 },
+              ]}
+            />
+          </Panel>
+          <Panel title="Findings by category">
+            <CategoryBreakdown
+              data={[
+                { category: "DFM", critical: 3, medium: 5, low: 8 },
+                { category: "Signal", critical: 4, medium: 6, low: 7 },
+                { category: "Thermal", critical: 2, medium: 3, low: 4 },
+                { category: "EMI / EMC", critical: 3, medium: 2, low: 5 },
+                { category: "BOM", critical: 0, medium: 2, low: 3 },
+              ]}
+            />
           </Panel>
         </div>
 

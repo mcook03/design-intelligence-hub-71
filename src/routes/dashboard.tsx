@@ -7,6 +7,8 @@ import {
   LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid, AreaChart, Area,
 } from "recharts";
 import { ArrowUpRight, CircuitBoard, TrendingUp, AlertTriangle } from "lucide-react";
+import { BoardHeatmap } from "@/components/silicore/BoardHeatmap";
+import { SeverityDonut, CategoryBreakdown } from "@/components/silicore/AnalysisCharts";
 
 export const Route = createFileRoute("/dashboard")({
   head: () => ({ meta: [{ title: "Dashboard — Silicore" }] }),
@@ -89,6 +91,31 @@ function Dashboard() {
             </ResponsiveContainer>
           </Panel>
         </div>
+
+        <div className="grid gap-4 lg:grid-cols-[1fr_360px]">
+          <BoardHeatmap title="Fleet hotspot map" cols={22} rows={10} />
+          <Panel title="Severity mix · all boards">
+            <SeverityDonut
+              data={[
+                { name: "critical", value: 7 },
+                { name: "medium", value: 24 },
+                { name: "low", value: 61 },
+              ]}
+            />
+          </Panel>
+        </div>
+
+        <Panel title="Findings by category">
+          <CategoryBreakdown
+            data={[
+              { category: "DFM", critical: 2, medium: 8, low: 18 },
+              { category: "Signal", critical: 2, medium: 7, low: 14 },
+              { category: "Thermal", critical: 1, medium: 4, low: 12 },
+              { category: "EMI / EMC", critical: 2, medium: 3, low: 9 },
+              { category: "BOM", critical: 0, medium: 2, low: 8 },
+            ]}
+          />
+        </Panel>
 
         <Panel title="Recent analyses" action={<Link to="/history" className="font-mono text-xs text-primary hover:underline">view all →</Link>}>
           <div className="-mx-6 overflow-x-auto">
