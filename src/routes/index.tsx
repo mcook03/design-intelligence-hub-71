@@ -222,16 +222,6 @@ function Hero() {
           </div>
         </Reveal>
 
-        {/* Trust strip */}
-        <Reveal delay={950}>
-          <div className="mx-auto mt-20 flex max-w-3xl flex-wrap items-center justify-center gap-x-10 gap-y-4 font-mono text-[10.5px] uppercase tracking-[0.28em] text-muted-foreground/70">
-            <span>Signal · over · noise</span>
-            <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
-            <span>Built · for · hardware · teams</span>
-            <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
-            <span>Atlas · powered</span>
-          </div>
-        </Reveal>
       </div>
     </section>
   );
