@@ -4,6 +4,8 @@ import { ScoreRing } from "@/components/silicore/ScoreRing";
 import { Panel } from "@/components/silicore/Panel";
 import { Button } from "@/components/ui/button";
 import { Upload, FileUp, Sparkles, AlertTriangle, AlertCircle, Info, CheckCircle2, ChevronRight } from "lucide-react";
+import { BoardHeatmap } from "@/components/silicore/BoardHeatmap";
+import { SeverityDonut, CategoryBreakdown } from "@/components/silicore/AnalysisCharts";
 
 export const Route = createFileRoute("/analyze")({
   head: () => ({ meta: [{ title: "Board analysis — Silicore" }] }),
@@ -71,6 +73,31 @@ function Analyze() {
             </div>
           </Panel>
         </div>
+
+        <div className="grid gap-4 lg:grid-cols-[1fr_360px]">
+          <BoardHeatmap title="Board heatmap · sentinel-power.brd" />
+          <Panel title="Severity mix">
+            <SeverityDonut
+              data={[
+                { name: "critical", value: 3 },
+                { name: "medium", value: 6 },
+                { name: "low", value: 5 },
+              ]}
+            />
+          </Panel>
+        </div>
+
+        <Panel title="Findings by category">
+          <CategoryBreakdown
+            data={[
+              { category: "DFM", critical: 1, medium: 2, low: 1 },
+              { category: "Signal", critical: 1, medium: 4, low: 1 },
+              { category: "Thermal", critical: 0, medium: 0, low: 1 },
+              { category: "EMI / EMC", critical: 1, medium: 0, low: 2 },
+              { category: "BOM", critical: 0, medium: 0, low: 0 },
+            ]}
+          />
+        </Panel>
 
         <Panel title="Findings & recommendations" action={<span className="font-mono text-xs text-muted-foreground">{findings.length} total</span>}>
           <div className="space-y-2">
