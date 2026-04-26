@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/silicore/SiteHeader";
 import { Logo } from "@/components/silicore/Logo";
+import { Reveal, RevealWords } from "@/components/silicore/Reveal";
 import { Button } from "@/components/ui/button";
 import { ArrowRight, Layers, Network, Sparkles } from "lucide-react";
 
