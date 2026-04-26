@@ -64,7 +64,6 @@ function PrimaryPill({
       "0 0 40px -6px oklch(0.86 0.13 215 / 0.65), inset 0 1px 0 oklch(1 0 0 / 0.4)",
   };
   if (to) {
-    // @ts-expect-error — Link route type is generated
     return (
       <Link to={to} className={cls} style={style}>
         {children}
