@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/silicore/AppShell";
-import { ScoreRing } from "@/routes/index";
+import { ScoreRing } from "@/components/silicore/ScoreRing";
 import { Panel } from "@/routes/dashboard";
 import { Button } from "@/components/ui/button";
 import { Upload, FileUp, Sparkles, AlertTriangle, AlertCircle, Info, CheckCircle2, ChevronRight } from "lucide-react";
