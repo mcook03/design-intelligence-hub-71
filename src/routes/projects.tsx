@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/silicore/AppShell";
-import { ScorePill } from "@/routes/dashboard";
+import { ScorePill } from "@/components/silicore/Panel";
 import { Button } from "@/components/ui/button";
 import { Plus, FolderKanban, ArrowRight } from "lucide-react";
 

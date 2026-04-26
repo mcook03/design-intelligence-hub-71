@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/silicore/AppShell";
 import { ScoreRing } from "@/components/silicore/ScoreRing";
+import { Panel, ScorePill } from "@/components/silicore/Panel";
 import { Link } from "@tanstack/react-router";
 import {
   LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid, AreaChart, Area,
@@ -150,20 +151,3 @@ function Mini({ label, value, tone }: { label: string; value: string; tone: "dan
   );
 }
 
-export function Panel({ title, children, action }: { title: string; children: React.ReactNode; action?: React.ReactNode }) {
-  return (
-    <div className="rounded-2xl border border-border bg-surface p-6">
-      <div className="mb-4 flex items-center justify-between">
-        <h3 className="text-sm font-medium">{title}</h3>
-        {action}
-      </div>
-      {children}
-    </div>
-  );
-}
-
-export function ScorePill({ score }: { score: number }) {
-  const tone = score >= 80 ? "success" : score >= 65 ? "warning" : "danger";
-  const cls = { success: "text-success bg-success/10", warning: "text-warning bg-warning/10", danger: "text-danger bg-danger/10" }[tone];
-  return <span className={`inline-flex items-center rounded-md px-2 py-0.5 font-mono text-xs ${cls}`}>{score}</span>;
-}
