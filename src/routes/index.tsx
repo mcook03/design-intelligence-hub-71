@@ -89,7 +89,6 @@ function GhostPill({
   const cls =
     "inline-flex items-center justify-center rounded-full border border-white/10 bg-white/5 px-7 py-3 text-[15px] font-medium text-foreground transition-colors hover:bg-white/10 backdrop-blur-sm";
   if (to) {
-    // @ts-expect-error — Link route type is generated
     return (
       <Link to={to} className={cls}>
         {children}
