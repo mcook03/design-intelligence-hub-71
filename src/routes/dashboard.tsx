@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { AppShell } from "@/components/silicore/AppShell";
-import { ScoreRing } from "@/routes/index";
+import { ScoreRing } from "@/components/silicore/ScoreRing";
 import { Link } from "@tanstack/react-router";
 import {
   LineChart, Line, ResponsiveContainer, XAxis, YAxis, Tooltip, CartesianGrid, AreaChart, Area,
