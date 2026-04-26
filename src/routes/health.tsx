@@ -5,7 +5,7 @@ import { CheckCircle2, Server, Database, Cpu, Cloud } from "lucide-react";
 
 export const Route = createFileRoute("/health")({
   head: () => ({ meta: [{ title: "System health — Silicore" }] }),
-  component: Health;
+  component: Health,
 });
 
 const services = [
