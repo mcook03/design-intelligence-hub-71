@@ -179,17 +179,49 @@ function Hero() {
               <stop offset="100%" stopColor="oklch(0.86 0.13 215)" stopOpacity="0" />
             </radialGradient>
           </defs>
-          {/* horizontal + vertical traces */}
-          <path d="M40 200 L260 200 L300 240 L520 240 L560 200 L760 200" />
-          <path d="M40 600 L220 600 L260 560 L520 560 L560 600 L760 600" />
-          <path d="M120 40 L120 240 L160 280 L160 520 L120 560 L120 760" />
-          <path d="M680 40 L680 220 L640 260 L640 540 L680 580 L680 760" />
-          <path d="M260 400 L340 400 L380 360 L420 360 L460 400 L540 400" />
-          <path d="M400 120 L400 260 L360 300 L360 360" />
-          <path d="M400 680 L400 540 L440 500 L440 440" />
-          {/* diagonal accent traces */}
-          <path d="M200 320 L320 320 L380 380" strokeOpacity="0.6" />
-          <path d="M600 480 L480 480 L420 420" strokeOpacity="0.6" />
+          {(() => {
+            const traces = [
+              "M40 200 L260 200 L300 240 L520 240 L560 200 L760 200",
+              "M40 600 L220 600 L260 560 L520 560 L560 600 L760 600",
+              "M120 40 L120 240 L160 280 L160 520 L120 560 L120 760",
+              "M680 40 L680 220 L640 260 L640 540 L680 580 L680 760",
+              "M260 400 L340 400 L380 360 L420 360 L460 400 L540 400",
+              "M400 120 L400 260 L360 300 L360 360",
+              "M400 680 L400 540 L440 500 L440 440",
+            ];
+            const accents = [
+              "M200 320 L320 320 L380 380",
+              "M600 480 L480 480 L420 420",
+            ];
+            return (
+              <>
+                {/* base traces */}
+                {traces.map((d, i) => <path key={`t-${i}`} d={d} />)}
+                {accents.map((d, i) => <path key={`a-${i}`} d={d} strokeOpacity={0.6} />)}
+                {/* signal sweeps — bright pulse traveling along each trace */}
+                {[...traces, ...accents].map((d, i) => (
+                  <path
+                    key={`sig-${i}`}
+                    d={d}
+                    stroke="oklch(0.92 0.1 215)"
+                    strokeWidth="1.6"
+                    strokeLinecap="round"
+                    strokeDasharray="36 1200"
+                    style={{ filter: "drop-shadow(0 0 6px oklch(0.86 0.13 215 / 0.9))" }}
+                  >
+                    <animate
+                      attributeName="stroke-dashoffset"
+                      from="1236"
+                      to="0"
+                      dur={`${10 + (i % 4) * 2.5}s`}
+                      begin={`${(i * 0.9) % 6}s`}
+                      repeatCount="indefinite"
+                    />
+                  </path>
+                ))}
+              </>
+            );
+          })()}
           {/* vias / pads */}
           {[
             [120, 200], [260, 200], [560, 200], [680, 220],
@@ -199,10 +231,18 @@ function Hero() {
           ].map(([cx, cy], i) => (
             <g key={i}>
               <circle cx={cx} cy={cy} r="3.5" fill="oklch(0.86 0.13 215)" />
-              <circle cx={cx} cy={cy} r="9" fill="url(#pad-grad)" opacity="0.7" />
+              <circle cx={cx} cy={cy} r="9" fill="url(#pad-grad)" opacity="0.7">
+                <animate
+                  attributeName="opacity"
+                  values="0.25;0.85;0.25"
+                  dur={`${4 + (i % 5) * 0.6}s`}
+                  begin={`${(i * 0.4) % 3}s`}
+                  repeatCount="indefinite"
+                />
+              </circle>
             </g>
           ))}
-          {/* corner IC outlines */}
+          {/* corner IC outline */}
           <rect x="320" y="340" width="160" height="120" rx="6" strokeOpacity="0.45" />
           {[0,1,2,3,4,5].map(i => (
             <line key={`tl-${i}`} x1={340 + i*22} y1="340" x2={340 + i*22} y2="328" strokeOpacity="0.45" />
