@@ -9,6 +9,11 @@ import {
   Settings,
   Search,
   Bell,
+  Sparkles,
+  Network,
+  ListChecks,
+  ShieldCheck,
+  Activity,
 } from "lucide-react";
 import type { ReactNode } from "react";
 
@@ -17,7 +22,12 @@ const nav = [
   { to: "/analyze", label: "Board analysis", icon: CircuitBoard },
   { to: "/compare", label: "Compare", icon: GitCompareArrows },
   { to: "/projects", label: "Projects", icon: FolderKanban },
+  { to: "/atlas", label: "Atlas AI", icon: Sparkles },
+  { to: "/nexus-ops", label: "Nexus Ops", icon: Network },
+  { to: "/jobs", label: "Jobs", icon: ListChecks },
   { to: "/history", label: "History", icon: History },
+  { to: "/admin/audit", label: "Audit log", icon: ShieldCheck },
+  { to: "/health", label: "Health", icon: Activity },
   { to: "/settings", label: "Settings", icon: Settings },
 ] as const;
 
