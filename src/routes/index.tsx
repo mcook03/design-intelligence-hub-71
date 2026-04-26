@@ -231,27 +231,31 @@ function WhatItDoes() {
     <section id="what" className="border-t border-border/60 py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 lg:grid-cols-[1fr_1.4fr]">
-          <div>
+          <Reveal>
             <SectionLabel>What it does</SectionLabel>
             <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-5xl">
-              Built to make hardware systems feel legible.
+              <RevealWords text="Built to make hardware systems feel legible." stagger={55} />
             </h2>
             <p className="mt-5 text-muted-foreground">
               A visual introduction to a company and platform that help hardware
               teams see their work more clearly, move with more confidence, and
               operate with stronger technical continuity.
             </p>
-          </div>
+          </Reveal>
           <div className="space-y-px rounded-2xl border border-border bg-border">
             {items.map((it, i) => (
-              <div key={it.title} className="grid grid-cols-[80px_1fr] gap-6 bg-background p-8 first:rounded-t-2xl last:rounded-b-2xl md:grid-cols-[120px_1fr]">
-                <div className="font-mono text-xs text-muted-foreground">0{i + 1}</div>
+              <Reveal
+                key={it.title}
+                delay={i * 130}
+                className="grid grid-cols-[80px_1fr] gap-6 bg-background p-8 first:rounded-t-2xl last:rounded-b-2xl md:grid-cols-[120px_1fr]"
+              >
+                <div className="font-mono text-xs text-primary">0{i + 1}</div>
                 <div>
                   <h3 className="text-xl font-medium">{it.title}</h3>
                   <p className="mt-1 text-sm text-foreground/80">{it.sub}</p>
                   <p className="mt-3 text-sm text-muted-foreground">{it.desc}</p>
                 </div>
-              </div>
+              </Reveal>
             ))}
           </div>
         </div>
