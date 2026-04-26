@@ -6,21 +6,24 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-6">
-        <Link to="/" className="flex items-center">
+        <Link to="/" className="flex items-center gap-3">
           <Logo />
+          <span className="hidden font-mono text-[10px] uppercase tracking-[0.25em] text-muted-foreground sm:inline">
+            Engineering Intelligence
+          </span>
         </Link>
         <nav className="hidden items-center gap-8 text-sm text-muted-foreground md:flex">
-          <a href="#how" className="transition-colors hover:text-foreground">How it works</a>
-          <a href="#features" className="transition-colors hover:text-foreground">Platform</a>
-          <a href="#integrations" className="transition-colors hover:text-foreground">Integrations</a>
-          <Link to="/dashboard" className="transition-colors hover:text-foreground">Product</Link>
+          <a href="#system" className="transition-colors hover:text-foreground">Silicore</a>
+          <a href="#system" className="transition-colors hover:text-foreground">Nexus</a>
+          <a href="#system" className="transition-colors hover:text-foreground">Atlas</a>
+          <a href="#what" className="transition-colors hover:text-foreground">Experience</a>
         </nav>
         <div className="flex items-center gap-2">
           <Link to="/dashboard" className="hidden text-sm text-muted-foreground transition-colors hover:text-foreground md:block">
             Sign in
           </Link>
-          <Link to="/analyze">
-            <Button size="sm" className="rounded-full font-medium">Start analysis →</Button>
+          <Link to="/dashboard">
+            <Button size="sm" className="rounded-full font-medium">Open Nexus →</Button>
           </Link>
         </div>
       </div>
