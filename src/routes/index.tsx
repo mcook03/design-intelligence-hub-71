@@ -170,10 +170,10 @@ function System() {
   return (
     <section id="system" className="border-t border-border/60 py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="max-w-3xl">
+        <Reveal as="div" className="max-w-3xl">
           <SectionLabel>The System</SectionLabel>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-5xl">
-            Three names. One connected experience.
+            <RevealWords text="Three names. One connected experience." stagger={50} />
           </h2>
           <p className="mt-5 max-w-2xl text-muted-foreground">
             Silicore is the company. Silicore Nexus is the platform. Atlas
@@ -181,11 +181,11 @@ function System() {
             intentional — so the product feels deliberate before anyone ever
             reaches the dashboard.
           </p>
-        </div>
+        </Reveal>
 
         <div className="mt-14 grid gap-px overflow-hidden rounded-2xl border border-border bg-border md:grid-cols-3">
-          {cards.map((c) => (
-            <div key={c.title} className="group relative bg-background p-8 transition-colors hover:bg-surface">
+          {cards.map((c, idx) => (
+            <Reveal key={c.title} delay={idx * 150} className="group relative bg-background p-8 transition-colors hover:bg-surface">
               <div className="flex items-center justify-between">
                 <span className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
                   <c.icon className="h-5 w-5" />
@@ -194,7 +194,7 @@ function System() {
               </div>
               <h3 className="mt-8 text-2xl font-medium tracking-tight">{c.title}</h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{c.desc}</p>
-            </div>
+            </Reveal>
           ))}
         </div>
       </div>
