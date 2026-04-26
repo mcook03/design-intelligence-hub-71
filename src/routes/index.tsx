@@ -133,57 +133,86 @@ function Hero() {
     <section className="relative">
       {/* Floating colored glows for depth */}
       <div
-        className="pointer-events-none absolute -left-32 top-32 h-[520px] w-[520px] rounded-full opacity-50 blur-3xl animate-float-glow"
+        className="pointer-events-none absolute -left-32 top-32 h-[520px] w-[520px] rounded-full opacity-50 blur-3xl animate-drift"
         style={{
           background:
             "radial-gradient(circle, oklch(0.88 0.15 175 / 0.45), transparent 65%)",
         }}
       />
       <div
-        className="pointer-events-none absolute right-[-160px] top-20 h-[560px] w-[560px] rounded-full opacity-50 blur-3xl animate-float-glow"
+        className="pointer-events-none absolute right-[-160px] top-20 h-[560px] w-[560px] rounded-full opacity-50 blur-3xl animate-drift"
         style={{
           background:
             "radial-gradient(circle, oklch(0.78 0.13 255 / 0.5), transparent 65%)",
           animationDelay: "1.5s",
         }}
       />
-      <div
-        className="pointer-events-none absolute left-1/2 top-[55%] h-[420px] w-[420px] -translate-x-1/2 rounded-full opacity-40 blur-3xl animate-float-glow"
-        style={{
-          background:
-            "radial-gradient(circle, oklch(0.86 0.13 215 / 0.55), transparent 65%)",
-          animationDelay: "3s",
-        }}
-      />
 
-      <div className="relative mx-auto max-w-6xl px-6 pb-32 pt-20 text-center md:pt-28">
+      {/* Orbital conic halos behind the headline */}
+      <div className="pointer-events-none absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2">
+        <div
+          className="h-[780px] w-[780px] rounded-full opacity-[0.35] blur-2xl animate-spin-slow"
+          style={{
+            background:
+              "conic-gradient(from 90deg, transparent 0deg, oklch(0.86 0.13 215 / 0.6) 60deg, transparent 140deg, oklch(0.78 0.13 255 / 0.55) 220deg, transparent 300deg)",
+            mask: "radial-gradient(circle, black 30%, transparent 72%)",
+            WebkitMask: "radial-gradient(circle, black 30%, transparent 72%)",
+          }}
+        />
+      </div>
+      <div className="pointer-events-none absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2">
+        <div className="h-[520px] w-[520px] rounded-full border border-white/[0.06] animate-spin-slower" />
+      </div>
+      <div className="pointer-events-none absolute left-1/2 top-[42%] -translate-x-1/2 -translate-y-1/2">
+        <div className="h-[340px] w-[340px] rounded-full border border-white/[0.05]" />
+      </div>
+
+      {/* Grain overlay */}
+      <div className="bg-noise pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay" />
+
+      <div className="relative mx-auto max-w-6xl px-6 pb-32 pt-24 text-center md:pt-32">
+        {/* Eyebrow chip */}
         <Reveal>
-          <SectionLabel center>Silicore</SectionLabel>
+          <div className="mx-auto inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3.5 py-1.5 backdrop-blur-md">
+            <span
+              className="h-1.5 w-1.5 rounded-full bg-primary"
+              style={{ boxShadow: "0 0 10px oklch(0.86 0.13 215)" }}
+            />
+            <span className="font-mono text-[10.5px] uppercase tracking-[0.32em] text-primary/90">
+              Silicore · Engineering Intelligence
+            </span>
+          </div>
         </Reveal>
 
-        <h1 className="mx-auto mt-10 max-w-5xl text-[44px] font-semibold leading-[1.02] tracking-[-0.03em] sm:text-6xl md:text-7xl lg:text-[104px]">
+        {/* Intelligence — dominant first thing, with descender padding + intense glow */}
+        <h1 className="mx-auto mt-12 max-w-6xl text-[64px] font-semibold tracking-[-0.035em] sm:text-[88px] md:text-[120px] lg:text-[160px]">
           <Reveal>
-            <span className="block text-foreground">Hardware Design</span>
-          </Reveal>
-          <Reveal delay={250}>
             <span
-              className="mt-2 block bg-clip-text text-transparent"
+              aria-label="Intelligence"
+              className="animate-shimmer-text block bg-clip-text pb-[0.22em] leading-[1.1] text-transparent"
               style={{
                 backgroundImage:
-                  "linear-gradient(180deg, oklch(0.92 0.1 215), oklch(0.7 0.16 260))",
-                filter: "drop-shadow(0 0 60px oklch(0.78 0.13 255 / 0.45))",
+                  "linear-gradient(100deg, oklch(0.985 0.012 220) 0%, oklch(0.86 0.13 215) 30%, oklch(0.78 0.13 255) 55%, oklch(0.86 0.13 215) 75%, oklch(0.985 0.012 220) 100%)",
+                filter:
+                  "drop-shadow(0 0 60px oklch(0.86 0.13 215 / 0.55)) drop-shadow(0 0 140px oklch(0.78 0.13 255 / 0.35))",
               }}
             >
               Intelligence
             </span>
           </Reveal>
+
+          <Reveal delay={250}>
+            <span className="mt-1 block text-[18px] font-normal tracking-[0.04em] text-muted-foreground sm:text-[22px] md:text-[26px]">
+              for hardware that has to work.
+            </span>
+          </Reveal>
         </h1>
 
         <Reveal delay={550}>
-          <p className="mx-auto mt-10 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
-            Deep engineering intelligence for your PCB designs by identifying
-            potential risks, understanding design weaknesses, and improving
-            performance before production.
+          <p className="mx-auto mt-12 max-w-2xl text-base leading-relaxed text-muted-foreground md:text-lg">
+            Silicore is deep engineering intelligence for PCB design — surfacing
+            risk, exposing weakness, and sharpening performance long before the
+            board ever ships to production.
           </p>
         </Reveal>
 
@@ -191,6 +220,17 @@ function Hero() {
           <div className="mt-10 flex flex-col items-center justify-center gap-3 sm:flex-row">
             <PrimaryPill href="#cta">Request Demo</PrimaryPill>
             <GhostPill href="#what">Learn More</GhostPill>
+          </div>
+        </Reveal>
+
+        {/* Trust strip */}
+        <Reveal delay={950}>
+          <div className="mx-auto mt-20 flex max-w-3xl flex-wrap items-center justify-center gap-x-10 gap-y-4 font-mono text-[10.5px] uppercase tracking-[0.28em] text-muted-foreground/70">
+            <span>Signal · over · noise</span>
+            <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+            <span>Built · for · hardware · teams</span>
+            <span className="h-1 w-1 rounded-full bg-muted-foreground/40" />
+            <span>Atlas · powered</span>
           </div>
         </Reveal>
       </div>
