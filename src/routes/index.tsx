@@ -279,31 +279,31 @@ function Lifecycle() {
   return (
     <section className="border-t border-border/60 py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-6">
-        <div className="max-w-3xl">
+        <Reveal as="div" className="max-w-3xl">
           <SectionLabel>How Silicore works</SectionLabel>
           <h2 className="mt-4 text-3xl font-semibold tracking-tight md:text-5xl">
-            Intelligence across the Silicore lifecycle.
+            <RevealWords text="Intelligence across the Silicore lifecycle." stagger={55} />
           </h2>
           <p className="mt-5 max-w-2xl text-muted-foreground">
             Silicore Nexus moves from raw design input to actionable engineering
             guidance through a connected lifecycle built for hardware teams.
           </p>
-        </div>
+        </Reveal>
 
         <div className="relative mt-16">
           {/* connecting line */}
-          <div className="absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-transparent via-border to-transparent lg:block" />
+          <div className="absolute left-0 right-0 top-6 hidden h-px bg-gradient-to-r from-transparent via-primary/50 to-transparent lg:block" />
           <ol className="grid gap-px overflow-hidden rounded-2xl border border-border bg-border lg:grid-cols-5 lg:rounded-none lg:border-0 lg:bg-transparent">
-            {steps.map((s) => (
-              <li key={s.n} className="relative bg-background p-6 lg:bg-transparent">
+            {steps.map((s, i) => (
+              <Reveal as="li" key={s.n} delay={i * 120} className="relative bg-background p-6 lg:bg-transparent">
                 <div className="flex items-center gap-3">
-                  <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-primary/40 bg-background font-mono text-xs text-primary">
+                  <span className="relative z-10 flex h-12 w-12 items-center justify-center rounded-full border border-primary/40 bg-background font-mono text-xs text-primary shadow-[0_0_20px_-4px_oklch(0.86_0.13_215_/_0.55)]">
                     {s.n}
                   </span>
                 </div>
                 <h3 className="mt-5 text-lg font-medium">{s.title}</h3>
                 <p className="mt-2 text-sm text-muted-foreground">{s.desc}</p>
-              </li>
+              </Reveal>
             ))}
           </ol>
         </div>
